@@ -1,0 +1,2 @@
+# CompetitiveWork
+Personal programming feats
