@@ -1,76 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define maxN 1001
-string grid[maxN];
-string pattern[maxN];
-bool check(int R, int r)
-{
-    bool ans = false;
-    for(int i = 0; i <= R -r ; i++ )
+using lli = long long int;
+using pii = pair<int, int>;
+const lli maxN = 2e5 + 5;
+lli controls[maxN];
+lli arr[maxN];
+int main() {
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin>>n;
+    vector<pii>adj[n];
+    // memset(index, 0, sizeof(index));
+    for(int i = 0; i< n; i++)
     {
-        int C = grid[0].size();
-        int c = pattern[0].size();
-        for(int offset = 0; offset <= C - c; offset++)
-        {
-            bool poss =true;
-            for(int i1 = i ; i1 < i + r; i1++)
-            {
-                for(int j1 = offset; j1 < offset + c; j1 ++)
-                {
-                    if(grid[i1][j1] != pattern[i1 - i][j1 - offset])
-                    {
-                        poss = false;
-                        break;
-                    }
-                }
-            }
-            ans = ans || poss;
-        }
-        return ans;
+        cin>>controls[i];
     }
-}
-string gridSearch(vector<string> G, vector<string> P)
-{
-    for(int i = 0; i< G.size(); i++)
+    for(int i = 0; i< n-1; i++)
     {
-        grid[i] = G[i];
+        cin>>arr[i];
     }
-    for(int i =0; i< P.size(); i++)
+    for(int i = 0; i< n; i++)
     {
-        pattern[i] = P[i];
+        int pi = arr[i];
+        pi--;
+        int wt;
+        cin>>wt;
+        adj[pi].push_back({i + 1, wt});
     }
-    bool ck = check(G.size(), P.size());
-    if(ck)
-    return "YES";
-    else
-    return "NO";
-}
-int main()
-{
-    int  t;
-    cin>>t;
-    while(t--)
-    {
-        int R, C;
-        cin>>R>>C;
-        for(int i = 0; i < R; i++)
-        {
-            cin>>grid[i];
-        }
-        int r, c;
-        cin>>r>>c;
-        for(int i = 0; i< r; i++)
-        {
-            cin>>pattern[i];
-        }
-        if(check(R, r))
-        {
-            cout<<"YES\n";
-        }
-        else
-        {
-            cout<<"NO\n";
-        }
-    }
-    
+        
+
+
+
 }
