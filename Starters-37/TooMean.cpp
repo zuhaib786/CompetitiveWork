@@ -33,7 +33,7 @@ int main()
             lli s2 = 0;
             double mx = sum/n;
             int cnt = n;
-            for(int i = n - 1; i < n; i++)
+            for(int i = n - 1; i > 0; i--)
             {
                 s2 += arr[i];
                 sum -= arr[i];
