@@ -10,7 +10,7 @@ struct event
 {
     lli i1, i2 , time, winner;
 };
-bool comp(const event & e1 , const event &e2)
+bool comp( event & e1 ,  event &e2)
 {
     return e1.time < e2.time;
 }
@@ -133,10 +133,6 @@ int main()
                 ans[i1 - 1] = min(ans[i1 - 1], time);
                 lostCows.insert(i1);
             }
-            if(i1 == 9 || i2 == 9)
-            {
-                cout<<i1<<" "<<i2<<" "<<ans[i1- 1]<<" "<<ans[i2 - 1]<<'\n';   
-            }
         }
         else
         {
@@ -149,28 +145,16 @@ int main()
             }
             else
             {
-                // cout<<i1<<' '<<i2<<'\n';
                 if(i1 == winner)
                 {
                     ans[i2 - 1] = min(ans[i2 - 1],  cows[i1 - 1].y - cows[i2 - 1].y);
-                    // if(i2 == 9)
-                    //     cout<<"HOW1\n";
                     s.insert({cows[i1 - 1].y - cows[i2 - 1].y, i2});
                 }
                 else
                 {
-                    if(i1 == 9)
-                    cout<<ans[i1 - i]<<" "<<cows[i2 - 1].x - cows[i1 - 1].x<<'\n';
-                    ans[i1 - 1] = min(ans[i1 - i], cows[i2 - 1].x - cows[i1 - 1].x);
-                    // if(i1 == 9)
-                    //     cout<<"HOW\n";
+                    ans[i1 - 1] = min(ans[i1 - 1], cows[i2 - 1].x - cows[i1 - 1].x);
                     s.insert({cows[i2 - 1].x - cows[i1 - 1].x, i1});
                 }
-                // cout<<ans[i1 - 1]<<" "<<ans[i2 - 1]<<" value \n";
-            }
-            if(i1 == 9 || i2 == 9)
-            {
-                cout<<i1<<" -  "<<i2<<" "<<ans[i1- 1]<<" "<<ans[i2 - 1]<<'\n';   
             }
         }
         
