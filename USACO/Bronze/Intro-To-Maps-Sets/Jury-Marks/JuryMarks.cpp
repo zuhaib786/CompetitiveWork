@@ -19,31 +19,20 @@ int main()
         onesc =l;
         m.insert(l);
     }
+    // cout<<onesc<<'\n';
     set<lli>poss;
+    int curSum = 0;
     for(int i = 0; i<k; i++)
     {
         set<lli>temp;
-        lli sc = onesc;
-        lli atZ = 0;
-        for(int j = i; j>=0; j--)
+        // lli sc = onesc + score[i];
+        curSum += score[i];
+        lli atZ = onesc - curSum ;
+        for(int j = 0; j<k; j++)
         {
-            sc = sc - score[j];
-            if(j == 0)
-                atZ = sc;
-            temp.insert(sc);
+            temp.insert(atZ + score[j]);
+            atZ += score[j];
         }
-        sc = onesc;
-        for(int j = i + 1; j< k; j++)
-        {
-            sc = sc + score[i];
-            temp.insert(sc);
-        }
-        cout<<"At Zero "<<atZ<<'\n';
-        for(auto x: temp)
-        {
-            cout<<x<<" "<<" ";
-        }
-        cout<<'\n';
         bool check = true;
         for(auto x: m)
         {
@@ -53,7 +42,7 @@ int main()
                 break;
             }
         }
-        cout<<check<<'\n';
+        // cout<<check<<'\n';
         if(check)
         {
             poss.insert(atZ);
