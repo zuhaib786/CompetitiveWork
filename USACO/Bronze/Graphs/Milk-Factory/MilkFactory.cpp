@@ -30,7 +30,7 @@ int main()
     setIO("factory");
     int n;
     cin>>n;
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < n - 1; i++)
     {
         int a, b;
         cin>>a >> b;
@@ -41,35 +41,22 @@ int main()
     memset(visited, 0, sizeof(visited));
     // Find Topological order of reverse graph
     // For that we run dfs on reverse graph
-    dfs(0);
-    vector<int>toporder;
-    while(!s.empty())
+    for(int i = 0; i<n; i++)
     {
-        toporder.push_back(s.top());
-        s.pop();
-    }
-    if(toporder.size() != n)
-    {
-        cout<<-1<<'\n';
-    }
-    else
-    {
-        int dp[n];
-        memset(dp, 0, sizeof(dp));
-        dp[toporder[0]] = 1;
-        for(int i = 0; i<n; i++)
+        memset(visited, 0, sizeof(visited));
+        dfs(i);
+        int ans = true;
+        for(int j = 0; j<n; j++)
         {
-            if(dp[toporder[i]] != 1)
-            {
-                cout<<-1<<'\n';
-                return 0;
-            }
-            for(auto x: rev[toporder[i]])
-            {
-                dp[x] = 1;
-            }
+            ans = ans & (visited[j] == 1);
         }
-        cout<<toporder[0] + 1<<'\n';
+        if(ans)
+        {
+            cout<<i + 1<<'\n';
+            return 0;
+        }
     }
+    cout<<-1<<'\n';
+
 
 }
