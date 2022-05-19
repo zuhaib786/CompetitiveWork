@@ -1,21 +1,10 @@
-import random
-import sys
-N = 10**5
-r = 10**9
-Q = 1
-t = random.randint(1, 10)
-print(t)
-for _ in range(t):
-    n = random.randint(1, 10)
-    print(n)
-    for _ in range(n):
-        print(random.randint( 10**9, 2* (10**9)), end = ' ')
-    print()
-    q = random.randint(1, Q)
-    print(q)
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(1, n)
-        # l = r
-        x = random.randint(10**9, 2* (10**9))
-        print(min(l, r), max(l, r), x)
+fp = open("output.txt")
+data1 = list(map(int, fp.readline().split()))
+data2 = list(map(int, fp.readline().split()))
+x1 = 0
+x2 = 0
+for i in range(len(data1)):
+    x1 ^= data1[i]
+    x2 ^= data2[i]
+    if i%2 == 1:
+        print(x1, x2)
