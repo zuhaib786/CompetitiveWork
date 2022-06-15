@@ -1,1 +1,0 @@
-db.trips.find({"birth year" :{"$ne" : ""}}, {"birth year" : 1}).sort({"birth year" :  - 1}).limit(1)
