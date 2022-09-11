@@ -1,4 +1,0 @@
-1) Harish Kumar: Machine learning and differential equations
-2) Punit Sharma Topics in numerical linear algebra
-3) Kamana Porwal: Implementation of finite element methods
-4) Harish Kumar: Numerical methods for DE
